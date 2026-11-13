@@ -244,9 +244,142 @@
     });
   }
 
-  /* ---------- trailer: pause when it leaves the screen ---------- */
-  const video = $('#trailer-video');
-  if (video) new IntersectionObserver(es => { if (!es[0].isIntersecting && !video.paused) video.pause(); }, { threshold: 0.15 }).observe(video);
+  /* ---------- trailer player: our own controls (the browser's bar stays only without JavaScript) ---------- */
+  const video = $('#trailer-video'), player = $('#player');
+  if (video && player) {
+    const big = $('#pl-big'), bar = $('#pl-bar'), seek = $('#pl-seek'), volEl = $('#pl-vol');
+    const playBtn = $('#pl-play'), muteBtn = $('#pl-mute'), fsBtn = $('#pl-fs'), timeEl = $('#pl-time');
+    const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+    const dur = () => (isFinite(video.duration) && video.duration > 0 ? video.duration : 29.6);
+    const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+
+    video.controls = false;
+    video.removeAttribute('controls');
+    big.hidden = bar.hidden = false;
+    player.tabIndex = 0;
+    player.setAttribute('role', 'group');
+    player.setAttribute('aria-label', 'Trailer player. Space plays or pauses, the arrow keys seek and change the volume, M mutes, F is full screen.');
+    // phones (iOS above all) do not let a page set the volume: keep only the mute button there
+    const v0 = video.volume;
+    try { video.volume = 0.5; } catch (e) {}
+    if (video.volume !== 0.5) player.classList.add('no-vol');
+    try { video.volume = v0; } catch (e) {}
+
+    const setSlider = (el, p) => {
+      $('.pl-fill', el).style.width = p * 100 + '%';
+      $('.pl-knob', el).style.left = p * 100 + '%';
+    };
+    function paint() {
+      const d = dur(), t = Math.min(video.currentTime, d);
+      setSlider(seek, clamp(t / d));
+      timeEl.textContent = fmt(t) + ' / ' + fmt(d);
+      seek.setAttribute('aria-valuemax', Math.floor(d));
+      seek.setAttribute('aria-valuenow', Math.floor(t));
+      seek.setAttribute('aria-valuetext', fmt(t) + ' of ' + fmt(d));
+      if (video.buffered.length) $('.pl-buf', seek).style.width = clamp(video.buffered.end(video.buffered.length - 1) / d) * 100 + '%';
+    }
+    function sync() {
+      const playing = !video.paused && !video.ended;
+      player.classList.toggle('is-playing', playing);
+      player.classList.toggle('is-muted', video.muted || video.volume === 0);
+      player.classList.toggle('is-fs', fsEl() === player);
+      playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      big.setAttribute('aria-label', video.ended ? 'Play the trailer again' : 'Play the trailer');
+      muteBtn.setAttribute('aria-label', video.muted || video.volume === 0 ? 'Unmute' : 'Mute');
+      fsBtn.setAttribute('aria-label', fsEl() === player ? 'Leave full screen' : 'Full screen');
+      const vol = video.muted ? 0 : video.volume;
+      setSlider(volEl, vol);
+      volEl.setAttribute('aria-valuenow', Math.round(vol * 100));
+      paint();
+      playing ? wake() : (clearTimeout(idleT), player.classList.remove('idle'));
+    }
+    let raf = 0;
+    const tick = () => { paint(); raf = !video.paused && !video.ended ? requestAnimationFrame(tick) : 0; };
+
+    // the bar hides while the trailer plays and nothing is touched
+    let idleT = 0;
+    function wake() {
+      player.classList.remove('idle');
+      clearTimeout(idleT);
+      if (video.paused || video.ended) return;
+      idleT = setTimeout(() => {
+        if (!video.paused && !seek.classList.contains('drag') && !volEl.classList.contains('drag') && !bar.matches(':hover') && !bar.contains(document.activeElement)) player.classList.add('idle');
+      }, 2600);
+    }
+    const toggle = () => { if (video.paused || video.ended) { const p = video.play(); if (p && p.catch) p.catch(() => {}); } else video.pause(); };
+    const seekBy = s => { video.currentTime = clamp(video.currentTime + s, 0, dur()); paint(); wake(); };
+    const setVol = v => { v = clamp(v); try { video.volume = v; } catch (e) {} video.muted = v === 0; sync(); };
+    const toggleMute = () => { video.muted = !video.muted; if (!video.muted && video.volume === 0) { try { video.volume = 0.6; } catch (e) {} } sync(); };
+    function toggleFs() {
+      if (fsEl()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      else if (player.requestFullscreen) { const p = player.requestFullscreen(); if (p && p.catch) p.catch(() => {}); }
+      else if (player.webkitRequestFullscreen) player.webkitRequestFullscreen();
+      else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen(); // iPhone: only the system player can go full screen
+    }
+
+    ['play', 'pause', 'ended', 'volumechange', 'loadedmetadata', 'durationchange'].forEach(ev => video.addEventListener(ev, sync));
+    video.addEventListener('play', () => { if (!raf) raf = requestAnimationFrame(tick); });
+    ['timeupdate', 'progress', 'seeked'].forEach(ev => video.addEventListener(ev, paint));
+    video.addEventListener('waiting', () => player.classList.add('waiting'));
+    ['playing', 'canplay', 'pause', 'seeked'].forEach(ev => video.addEventListener(ev, () => player.classList.remove('waiting')));
+    ['fullscreenchange', 'webkitfullscreenchange'].forEach(ev => document.addEventListener(ev, sync));
+
+    // a touch on the picture first brings the bar back; a click (or a second touch) plays or pauses
+    let lastPointer = 'mouse', wasIdle = false;
+    player.addEventListener('pointerdown', e => { lastPointer = e.pointerType || 'mouse'; wasIdle = player.classList.contains('idle'); }, true);
+    video.addEventListener('click', () => {
+      if (lastPointer !== 'mouse' && wasIdle) { wasIdle = false; wake(); return; }
+      toggle();
+    });
+    video.addEventListener('dblclick', () => { if (lastPointer === 'mouse') toggleFs(); });
+    big.addEventListener('click', toggle);
+    playBtn.addEventListener('click', toggle);
+    muteBtn.addEventListener('click', toggleMute);
+    fsBtn.addEventListener('click', toggleFs);
+    ['pointermove', 'pointerdown', 'focusin'].forEach(ev => player.addEventListener(ev, wake));
+
+    // sliders: click or drag, mouse and touch alike
+    function drag(el, apply) {
+      const at = e => { const r = el.getBoundingClientRect(); apply(clamp((e.clientX - r.left) / r.width)); };
+      el.addEventListener('pointerdown', e => {
+        if (e.button) return;
+        el.classList.add('drag');
+        try { el.setPointerCapture(e.pointerId); } catch (err) {}
+        at(e);
+        e.preventDefault();
+      });
+      el.addEventListener('pointermove', e => { if (el.classList.contains('drag')) at(e); });
+      const end = () => { el.classList.remove('drag'); wake(); };
+      el.addEventListener('pointerup', end);
+      el.addEventListener('pointercancel', end);
+    }
+    drag(seek, p => { video.currentTime = p * dur(); paint(); });
+    drag(volEl, setVol);
+
+    player.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      const onButton = e.target.tagName === 'BUTTON', onVol = e.target === volEl;
+      let used = true;
+      switch (e.key) {
+        case ' ': case 'Enter': if (onButton) return; toggle(); break;
+        case 'k': case 'K': toggle(); break;
+        case 'ArrowLeft': onVol ? setVol(video.volume - 0.1) : seekBy(-5); break;
+        case 'ArrowRight': onVol ? setVol(video.volume + 0.1) : seekBy(5); break;
+        case 'ArrowUp': setVol((video.muted ? 0 : video.volume) + 0.1); break;
+        case 'ArrowDown': setVol((video.muted ? 0 : video.volume) - 0.1); break;
+        case 'Home': video.currentTime = 0; paint(); break;
+        case 'End': video.currentTime = dur(); paint(); break;
+        case 'm': case 'M': toggleMute(); break;
+        case 'f': case 'F': toggleFs(); break;
+        default: used = false;
+      }
+      if (used) { e.preventDefault(); wake(); }
+    });
+
+    // pause when the trailer leaves the screen
+    new IntersectionObserver(es => { if (!es[0].isIntersecting && !video.paused && !fsEl()) video.pause(); }, { threshold: 0.15 }).observe(video);
+    sync();
+  }
 
   /* ---------- copy buttons ---------- */
   const toast = $('#toast');

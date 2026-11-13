@@ -84,10 +84,40 @@
 
         <div class="wrap wide" id="trailer">
           <figure class="frame grow" data-grow>
-            <video id="trailer-video" controls playsinline preload="metadata" poster="assets/trailer-poster.jpg" aria-label="+1 Punching Anime trailer">
-              <source src="assets/trailer.mp4" type="video/mp4">
-              Your browser cannot play this video. <a href="assets/trailer.mp4">Download the trailer</a>.
-            </video>
+            <div class="player" id="player">
+              <!-- the browser's own controls stay only when JavaScript is off; main.js swaps in the bar below -->
+              <video id="trailer-video" controls playsinline preload="metadata" poster="assets/trailer-poster.jpg" aria-label="+1 Punching Anime trailer">
+                <source src="assets/trailer.mp4" type="video/mp4">
+                Your browser cannot play this video. <a href="assets/trailer.mp4">Download the trailer</a>.
+              </video>
+              <button type="button" class="pl-big" id="pl-big" aria-label="Play the trailer" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.500v15l13-7.500z"/></svg>
+              </button>
+              <div class="pl-bar" id="pl-bar" hidden>
+                <div class="pl-slider pl-seek" id="pl-seek" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="29" aria-valuenow="0" aria-valuetext="0:00 of 0:29">
+                  <i class="pl-buf"></i><i class="pl-fill"></i><i class="pl-knob"></i>
+                </div>
+                <div class="pl-row">
+                  <button type="button" id="pl-play" aria-label="Play">
+                    <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.500v15l13-7.500z"/></svg>
+                    <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.500h4.500v15H6zM13.500 4.500H18v15h-4.500z"/></svg>
+                  </button>
+                  <span class="pl-time" id="pl-time" aria-hidden="true">0:00 / 0:29</span>
+                  <span class="pl-gap"></span>
+                  <button type="button" id="pl-mute" aria-label="Mute">
+                    <svg class="ic-vol" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.500v5h4l5 4.500V5L7 9.500z"/><path class="ln" d="M15.500 8.500a5 5 0 0 1 0 7M18 6a8.500 8.500 0 0 1 0 12"/></svg>
+                    <svg class="ic-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.500v5h4l5 4.500V5L7 9.500z"/><path class="ln" d="M16 9.500l5 5M21 9.500l-5 5"/></svg>
+                  </button>
+                  <div class="pl-slider pl-vol" id="pl-vol" role="slider" tabindex="0" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                    <i class="pl-fill"></i><i class="pl-knob"></i>
+                  </div>
+                  <button type="button" id="pl-fs" aria-label="Full screen">
+                    <svg class="ic-fs" viewBox="0 0 24 24" aria-hidden="true"><path class="ln" d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+                    <svg class="ic-exit" viewBox="0 0 24 24" aria-hidden="true"><path class="ln" d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
             <figcaption><span>Fig. 01</span><span>Official trailer | 30 s | with sound</span><a href="https://www.roblox.com/games/103492100605912/1-Punching-Anime" target="_blank" rel="noopener">Play on Roblox ↗</a></figcaption>
           </figure>
         </div>

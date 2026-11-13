@@ -23,5 +23,6 @@ Then open http://localhost:8827/ .
 ## Notes
 
 - Motion runs for every visitor; the "Motion: on/off" switch in the footer turns it off and remembers the choice.
-- The trailer never autoplays and plays inline on phones (`playsinline`).
+- The trailer never autoplays and plays inline on phones (`playsinline`). Its controls are the site's own (play, seek, time, mute and volume, full screen; Space, arrows, M and F on the keyboard). The browser's native controls only appear when JavaScript is off. On an iPhone, full screen hands over to the system player.
+- Video seeking needs a server that answers byte-range requests. GitHub Pages does; Python's `http.server` does not, so seeking jumps back to the start in that local preview.
 - Without JavaScript the page shows everything, just without motion.
