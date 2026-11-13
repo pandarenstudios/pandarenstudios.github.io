@@ -104,10 +104,6 @@
 
         <div class="wrap gallery-head">
           <p class="label" data-reveal>Fig. 02 <span>/</span> Five worlds</p>
-          <div class="gal-nav" data-reveal>
-            <button type="button" id="gal-prev" aria-label="Previous world">←</button>
-            <button type="button" id="gal-next" aria-label="Next world">→</button>
-          </div>
         </div>
         <div class="swipe" id="swipe" tabindex="0" aria-label="The five worlds of +1 Punching Anime. Swipe or use the arrow keys.">
           <figure><img src="assets/world-1.jpg" width="1024" height="292" loading="lazy" alt="World 1: a street of low-poly houses leading to a cliff of carved faces with a giant fox on top."><figcaption><b>W1</b> Ninja Village</figcaption></figure>
@@ -116,7 +112,11 @@
           <figure><img src="assets/world-4.jpg" width="1024" height="292" loading="lazy" alt="World 4: a white desert at night with a pale palace and tall towers under a crescent moon."><figcaption><b>W4</b> Soul City</figcaption></figure>
           <figure><img src="assets/world-5.jpg" width="1024" height="292" loading="lazy" alt="World 5: a bright city of dome houses with a tall thin tower and a round company dome."><figcaption><b>W5</b> Warrior Planet</figcaption></figure>
         </div>
-        <div class="pips" id="pips" aria-hidden="true"></div>
+        <div class="gal-ctl">
+          <button type="button" id="gal-prev" aria-label="Previous world">←</button>
+          <div class="pips" id="pips" aria-hidden="true"></div>
+          <button type="button" id="gal-next" aria-label="Next world">→</button>
+        </div>
 
         <div class="wrap">
           <p class="label spec-label" data-reveal>Under the hood</p>
@@ -196,6 +196,16 @@
                 <a class="btn ghost" data-magnet href="https://pandaren-studios.itch.io/clothing-club" target="_blank" rel="noopener">Fashion Club on itch.io <span class="arrow" aria-hidden="true">↗</span></a>
               </div>
             </div>
+          </div>
+          <div class="jam-figs">
+            <figure class="frame natural" data-reveal>
+              <img src="assets/jam-banner.jpg" width="1600" height="662" loading="lazy" alt="The jam's banner: the words Genies Avatar SDK Jam: Changing Identities above five stylised avatars and floating pieces of clothing.">
+              <figcaption><span>Fig. 04</span><span>The jam's banner, by its hosts (Genies)</span></figcaption>
+            </figure>
+            <figure class="frame natural" data-reveal style="--i:1">
+              <img src="assets/fashion-club.jpg" width="1283" height="795" loading="lazy" alt="Fashion Club's thumbnail: a low-poly bar with a neon BAR sign, a waiter carrying mugs and people at the tables.">
+              <figcaption><span>Fig. 05</span><span>Fashion Club | my submission's thumbnail</span></figcaption>
+            </figure>
           </div>
         </div>
       </section>

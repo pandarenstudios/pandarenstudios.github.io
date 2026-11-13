@@ -162,10 +162,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* ---------- swipe gallery (E2, M5) ---------- */
 .gallery-head { display: flex; justify-content: space-between; align-items: center; margin-top: clamp(56px, 9vw, 110px); margin-bottom: 16px; }
-.gal-nav { display: flex; gap: 8px; }
-.gal-nav button { width: 44px; height: 44px; border: 1px solid var(--line-2); border-radius: 3px; font-size: 18px; transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease); }
-.gal-nav button:hover { background: var(--amber); color: #000; border-color: var(--amber); }
-.gal-nav button:active { transform: scale(0.9); }
+.gal-ctl { display: flex; justify-content: center; align-items: center; gap: clamp(14px, 3vw, 26px); }
+.gal-ctl button { flex: none; width: 46px; height: 46px; border: 1px solid var(--line-2); border-radius: 3px; font-size: 18px; transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease); }
+.gal-ctl button:hover { background: var(--amber); color: #000; border-color: var(--amber); }
+.gal-ctl button:active { transform: scale(0.9); }
 .swipe { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px max(var(--gut), calc((100vw - 1240px) / 2)) 22px; scrollbar-width: none; cursor: grab; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
 .swipe::-webkit-scrollbar { display: none; }
 .swipe.drag { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
@@ -224,6 +224,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .medal-t { font: 400 clamp(30px, 4.4vw, 54px) / 1 var(--poster); text-transform: uppercase; letter-spacing: 0.3em; margin-right: -0.3em; }
 .medal-s { margin-top: 14px; font: 500 11px/1.5 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--mute); max-width: 26ch; margin-inline: auto; }
 .jam .body { margin-top: 14px; }
+/* the two pictures share one height: column widths follow their aspect ratios (2000:828 and 1283:795) */
+.jam-figs { display: grid; grid-template-columns: 2.415fr 1.614fr; gap: clamp(24px, 3.4vw, 44px); margin-top: clamp(44px, 7vw, 84px); align-items: start; }
+.frame.natural img { aspect-ratio: auto; height: auto; object-fit: contain; }
+@media (max-width: 900px) { .jam-figs { grid-template-columns: 1fr; } }
 .facts { display: grid; grid-template-columns: 1fr 1fr; margin-top: 24px; border-top: 1px solid var(--line-2); }
 .facts div { padding: 12px 0; border-bottom: 1px solid var(--line); }
 .facts dt { font: 600 11.5px var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); }
