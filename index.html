@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>TK, Game Developer</title>
+  <meta name="description" content="TK is a game developer with 5+ years of experience in Unity and Roblox. Solo developer of +1 Punching Anime on Roblox. Watch the trailer and see current work.">
+  <meta name="theme-color" content="#0a0b0c">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TK, Game Developer">
+  <meta property="og:description" content="Solo developer of +1 Punching Anime on Roblox. Trailer, current projects and contact.">
+  <meta property="og:image" content="assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // set before first paint so nothing flashes
+    document.documentElement.classList.add('js');
+    try { if (localStorage.getItem('motion') === 'off') document.documentElement.classList.add('nomotion'); } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#work">Skip to the work</a>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  <nav class="dots" id="dots" aria-label="Sections"></nav>
+
+  <header class="top">
+    <a class="brand" href="#top" aria-label="TK, Pandaren Studios: back to top"><b>TK</b><span>Pandaren Studios</span></a>
+    <nav class="menu" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+      <a class="menu-resume" href="resume.pdf" data-resume hidden>Resume</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" data-sec="Top">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="grid" data-parallax="0.18"></div>
+        <div class="glow" data-parallax="0.32"></div>
+      </div>
+      <div class="wrap hero-in">
+        <p class="label hero-kicker" data-reveal><i class="tick"></i>Game developer <span>/</span> Roblox + Unity <span>/</span> 5+ years</p>
+        <h1 class="poster" id="poster" aria-label="TK, Game Developer">
+          <span class="line" aria-hidden="true"><span>TK, Game</span></span>
+          <span class="line" aria-hidden="true"><span>Developer</span></span>
+        </h1>
+        <div class="hero-row">
+          <div class="hero-copy">
+            <p class="lead" data-reveal style="--i:4">I design, build and run games: 5+ years of experience, mostly in Unity and now on Roblox too. I work as Pandaren Studios, and I am the solo developer of <a href="#punching">+1 Punching Anime</a>.</p>
+            <div class="cta" data-reveal style="--i:5">
+              <a class="btn" data-magnet href="https://www.roblox.com/games/103492100605912/1-Punching-Anime" target="_blank" rel="noopener">Play +1 Punching Anime <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="btn ghost" data-magnet href="#trailer">Watch the trailer <span class="arrow down" aria-hidden="true">↓</span></a>
+              <a class="btn ghost" data-magnet data-resume hidden href="resume.pdf">Resume <span class="arrow" aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <nav class="index" aria-label="Work index" data-reveal style="--i:6">
+            <p class="label">Index</p>
+            <a href="#punching"><b>01</b><span>+1 Punching Anime</span><em>Roblox · Live</em></a>
+            <a href="#handheld"><b>02</b><span>Handheld Combat</span><em>Unity · In development</em></a>
+            <a href="#jam"><b>03</b><span>Fashion Club</span><em>Game jam · 2nd place</em></a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <div class="stack" id="work">
+      <!-- ============ 01 +1 PUNCHING ANIME ============ -->
+      <section class="panel p1" id="punching" data-sec="+1 Punching Anime">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="label" data-reveal><b class="no">01</b> Roblox <span>/</span> <i class="live"></i> Live</p>
+            <h2 class="title split" data-split>+1 Punching Anime</h2>
+            <p class="lead" data-reveal>An anime training simulator on Roblox. Train Strength, punch a villain through a street of destructible buildings, rebirth, and unlock five worlds.</p>
+            <p class="role" data-reveal><b>Solo developer</b> design, code, 3D art, UI, balance and live ops. Built with Claude Code as an AI pair programmer.</p>
+          </header>
+        </div>
+
+        <div class="wrap wide" id="trailer">
+          <figure class="frame grow" data-grow>
+            <video id="trailer-video" controls playsinline preload="metadata" poster="assets/trailer-poster.jpg" aria-label="+1 Punching Anime trailer">
+              <source src="assets/trailer.mp4" type="video/mp4">
+              Your browser cannot play this video. <a href="assets/trailer.mp4">Download the trailer</a>.
+            </video>
+            <figcaption><span>Fig. 01</span><span>Official trailer · 30 s · with sound</span><a href="https://www.roblox.com/games/103492100605912/1-Punching-Anime" target="_blank" rel="noopener">Play on Roblox ↗</a></figcaption>
+          </figure>
+        </div>
+
+        <div class="wrap">
+          <div class="nums">
+            <div class="num" data-reveal style="--i:0"><strong><span data-count="1">1</span> week</strong><p>From an empty project to a full, published game with four worlds.</p></div>
+            <div class="num" data-reveal style="--i:1"><strong>+<span data-count="1">1</span> week</strong><p>Of work hours since then, on live ops and more content, including a fifth world.</p></div>
+            <div class="num" data-reveal style="--i:2"><strong><span data-count="118">118</span>k</strong><p>Lines of Luau in 231 modules, synced with Rojo.</p></div>
+            <div class="num" data-reveal style="--i:3"><strong><span data-count="20">20</span></strong><p>Automated test suites guarding the game's logic.</p></div>
+          </div>
+        </div>
+
+        <div class="wrap gallery-head">
+          <p class="label" data-reveal>Fig. 02 <span>/</span> Five worlds</p>
+          <div class="gal-nav" data-reveal>
+            <button type="button" id="gal-prev" aria-label="Previous world">←</button>
+            <button type="button" id="gal-next" aria-label="Next world">→</button>
+          </div>
+        </div>
+        <div class="swipe" id="swipe" tabindex="0" aria-label="The five worlds of +1 Punching Anime. Swipe or use the arrow keys.">
+          <figure><img src="assets/world-1.jpg" width="1024" height="292" loading="lazy" alt="World 1: a street of low-poly houses leading to a cliff of carved faces with a giant fox on top."><figcaption><b>W1</b> Ninja Village</figcaption></figure>
+          <figure><img src="assets/world-2.jpg" width="1024" height="292" loading="lazy" alt="World 2: a festival street with a floating skull island, a castle on a rock and a blue dragon."><figcaption><b>W2</b> Samurai Country</figcaption></figure>
+          <figure><img src="assets/world-3.jpg" width="1024" height="292" loading="lazy" alt="World 3: half-timbered houses below a huge wall, with two giants looking over it."><figcaption><b>W3</b> Walled City</figcaption></figure>
+          <figure><img src="assets/world-4.jpg" width="1024" height="292" loading="lazy" alt="World 4: a white desert at night with a pale palace and tall towers under a crescent moon."><figcaption><b>W4</b> Soul City</figcaption></figure>
+          <figure><img src="assets/world-5.jpg" width="1024" height="292" loading="lazy" alt="World 5: a bright city of dome houses with a tall thin tower and a round company dome."><figcaption><b>W5</b> Warrior Planet</figcaption></figure>
+        </div>
+        <div class="pips" id="pips" aria-hidden="true"></div>
+
+        <div class="wrap">
+          <p class="label spec-label" data-reveal>Under the hood</p>
+          <div class="spec">
+            <article data-reveal style="--i:0"><h3>Engineering</h3><p>About 118,000 lines of Luau in 231 modules with Rojo. Server-authoritative gameplay, session-locked saves, 20 automated test suites.</p></article>
+            <article data-reveal style="--i:1"><h3>Procedural art</h3><p>Every building, hub and landmark is generated by headless Blender Python (124 scripts, about 52,000 lines) and pre-fractured for destruction.</p></article>
+            <article data-reveal style="--i:2"><h3>Game feel</h3><p>Anime impact frames, hit-stop, cinematic special-punch cutscenes and an opening cutscene.</p></article>
+            <article data-reveal style="--i:3"><h3>Performance</h3><p>Quality tiers and an fps governor aimed at 50 fps on phones and 100 on PC. An in-game benchmark: an iPhone 12 holds about 60 fps. Join download cut from 35 MB to 1.6 MB.</p></article>
+            <article data-reveal style="--i:4"><h3>Live ops</h3><p>An admin panel for cross-server events, gifts and announcements, soft server restarts, a player feedback inbox, 30+ custom analytics events with funnels, and an A/B test.</p></article>
+            <article data-reveal style="--i:5"><h3>Monetization</h3><p>10 game passes and 17 developer products, regional prices read live per player, and limited-stock items.</p></article>
+          </div>
+          <p class="meta" data-reveal>First commit 15 Oct 2026 <span>/</span> public 23 Oct 2026 <span>/</span> 590+ commits <span>/</span> five worlds within four weeks</p>
+          <div class="cta end" data-reveal>
+            <a class="btn" data-magnet href="https://www.roblox.com/games/103492100605912/1-Punching-Anime" target="_blank" rel="noopener">Play on Roblox <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 02 HANDHELD COMBAT ============ -->
+      <section class="panel p2" id="handheld" data-sec="Handheld Combat">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="label" data-reveal><b class="no">02</b> Unity 6 · URP <span>/</span> <i class="wip"></i> In development</p>
+            <h2 class="title split" data-split>Handheld Combat</h2>
+            <p class="lead" data-reveal>A first-person 1v1 sword-dueling game for Windows PC where your iPhone is the motion controller. A Safari page streams the phone's gyro at 60 Hz over WebRTC, paired by QR code.</p>
+            <p class="role" data-reveal><b>Status</b> a prototype in development, planned as a Steam title. Not released yet.</p>
+          </header>
+
+          <div class="two">
+            <figure class="frame tilt" data-tilt data-reveal>
+              <div class="tilt-in"><img src="assets/hc-motion-lab.jpg" width="1280" height="720" loading="lazy" alt="Unity prototype capture: a grey untextured character in a sword stance in the body motion lab, with a debug panel of motion measurements."></div>
+              <figcaption><span>Fig. 03</span><span>Prototype capture · body motion lab · greybox</span></figcaption>
+            </figure>
+            <ul class="list">
+              <li data-reveal style="--i:0"><b>Protocol</b> A versioned binary pose protocol with matching C# and TypeScript codecs, checked by golden vectors in CI.</li>
+              <li data-reveal style="--i:1"><b>Latency</b> A jitter buffer with gyro extrapolation and a One Euro filter. Measured 60 Hz, p95 26 ms between packets on Wi-Fi.</li>
+              <li data-reveal style="--i:2"><b>Sword and arm</b> A custom 7-DoF arm IK solver and deterministic blade-clash physics.</li>
+              <li data-reveal style="--i:3"><b>Body</b> A procedural body with foot planning, foot IK and a runtime ragdoll that gets back up.</li>
+              <li data-reveal style="--i:4"><b>Tracking</b> Webcam body tracking with BlazePose running in-engine.</li>
+              <li data-reveal style="--i:5"><b>Networking</b> FishNet + Steamworks, at an early stage: so far only tested on one PC.</li>
+              <li data-reveal style="--i:6"><b>Scale</b> About 76,000 lines of C# in 268 files, of which about 24,000 lines are tests (900+ tests). Also developed with AI coding agents.</li>
+            </ul>
+          </div>
+
+          <a class="linkcard" data-reveal href="https://www.instagram.com/p/DcahyFhs0NR/" target="_blank" rel="noopener">
+            <span class="play" aria-hidden="true"></span>
+            <span class="lc-text"><b>Watch the early-development reel</b><em>Instagram · @pandarenstudios</em></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ 03 GAME JAM ============ -->
+      <section class="panel p3" id="jam" data-sec="Game jam">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="label" data-reveal><b class="no">03</b> Game jam <span>/</span> Unity + Genies Avatar SDK</p>
+            <h2 class="title split" data-split>Fashion Club</h2>
+          </header>
+          <div class="two jam">
+            <div class="medal" data-reveal aria-label="Second place">
+              <span class="medal-n">2<sup>nd</sup></span>
+              <span class="medal-t">place</span>
+              <span class="medal-s">Genies' Avatar SDK Jam: Changing Identities</span>
+            </div>
+            <div>
+              <p class="lead" data-reveal>2nd place in the Genies' Avatar SDK Jam: Changing Identities, with my entry Fashion Club.</p>
+              <p class="body" data-reveal>You want into an exclusive club, and the bouncer checks your outfit: restyle your avatar until you meet the dress code. Built in Unity with the Genies Avatar SDK during the 10-day jam.</p>
+              <dl class="facts" data-reveal>
+                <div><dt>Where</dt><dd>itch.io</dd></div>
+                <div><dt>When</dt><dd>December 12 to 22, 2025</dd></div>
+                <div><dt>Judging</dt><dd>Genies' own judges</dd></div>
+                <div><dt>Prize</dt><dd>$500, second prize</dd></div>
+              </dl>
+              <div class="cta" data-reveal>
+                <a class="btn" data-magnet href="https://itch.io/jam/genies-avatar-sdk-jam" target="_blank" rel="noopener">The jam on itch.io <span class="arrow" aria-hidden="true">↗</span></a>
+                <a class="btn ghost" data-magnet href="https://itch.io/jam/genies-avatar-sdk-jam/rate/4141056" target="_blank" rel="noopener">My entry <span class="arrow" aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ APPROACH ============ -->
+    <section class="plain" id="approach" data-sec="Approach">
+      <div class="wrap">
+        <p class="label" data-reveal><b class="no">04</b> How I work</p>
+        <h2 class="title small split" data-split>One developer, AI pair programmers, real tests</h2>
+        <div class="approach">
+          <p class="lead" data-reveal>I build with AI coding agents as pair programmers, and I say so openly. It is how one person shipped a full game with four worlds in a week.</p>
+          <p class="body" data-reveal style="--i:1">The decisions stay mine: game design, architecture, art direction, balance and live ops. The agents give me speed. Automated tests, balance simulations and playtests keep the result honest.</p>
+        </div>
+      </div>
+      <div class="marquee" aria-label="Tools I work in">
+        <div class="track" id="marquee">
+          <span>Roblox Studio</span><span>Luau</span><span>Rojo</span><span>Unity 6</span><span>C#</span><span>URP</span><span>Blender Python</span><span>TypeScript</span><span>WebRTC</span><span>FishNet</span><span>Steamworks</span><span>Git</span><span>Claude Code</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="plain contact" id="contact" data-sec="Contact">
+      <div class="wrap">
+        <p class="label" data-reveal><b class="no">05</b> Contact</p>
+        <h2 class="title split" data-split>Let's talk</h2>
+        <div class="rows">
+          <div class="row" data-reveal style="--i:0">
+            <span class="k">Email</span>
+            <a class="v" href="mailto:pandarenstudios@gmail.com">pandarenstudios@gmail.com</a>
+            <button type="button" class="copy" data-copy="pandarenstudios@gmail.com" aria-label="Copy email address">Copy</button>
+          </div>
+          <a class="row" data-reveal style="--i:1" href="https://www.roblox.com/users/11656137939/profile" target="_blank" rel="noopener"><span class="k">Roblox</span><span class="v">Real_Pandaren</span><span class="go" aria-hidden="true">↗</span></a>
+          <a class="row" data-reveal style="--i:2" href="https://www.roblox.com/communities/77657608" target="_blank" rel="noopener"><span class="k">Roblox group</span><span class="v">Anime Punchers</span><span class="go" aria-hidden="true">↗</span></a>
+          <a class="row" data-reveal style="--i:3" href="https://www.instagram.com/pandarenstudios/" target="_blank" rel="noopener"><span class="k">Instagram</span><span class="v">@pandarenstudios</span><span class="go" aria-hidden="true">↗</span></a>
+          <a class="row" data-reveal style="--i:4" href="https://pandaren-studios.itch.io/" target="_blank" rel="noopener"><span class="k">itch.io</span><span class="v">pandaren-studios</span><span class="go" aria-hidden="true">↗</span></a>
+          <a class="row" data-reveal style="--i:5" href="https://x.com/PandarenStudios" target="_blank" rel="noopener"><span class="k">X</span><span class="v">@PandarenStudios</span><span class="go" aria-hidden="true">↗</span></a>
+          <a class="row" data-reveal style="--i:6" href="https://www.reddit.com/user/PandarenStudios/" target="_blank" rel="noopener"><span class="k">Reddit</span><span class="v">u/PandarenStudios</span><span class="go" aria-hidden="true">↗</span></a>
+          <div class="row" data-reveal style="--i:7">
+            <span class="k">Discord</span>
+            <span class="v">pandarenstudios</span>
+            <button type="button" class="copy" data-copy="pandarenstudios" aria-label="Copy Discord username">Copy</button>
+          </div>
+        </div>
+        <div class="cta end" data-reveal>
+          <a class="btn" data-magnet href="mailto:pandarenstudios@gmail.com">Email me <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="btn ghost" data-magnet data-resume hidden href="resume.pdf">Resume (PDF) <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> TK · Pandaren Studios</span>
+      <span>Plain HTML, CSS and a little JavaScript. No trackers.</span>
+      <button type="button" id="motion-toggle" aria-pressed="true">Motion: on</button>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="main.js" defer></script>
+</body>
+</html>
